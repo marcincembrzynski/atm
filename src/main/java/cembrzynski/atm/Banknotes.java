@@ -1,7 +1,6 @@
 package cembrzynski.atm;
 
 import javafx.util.Pair;
-
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
