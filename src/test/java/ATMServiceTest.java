@@ -25,7 +25,6 @@ public class ATMServiceTest {
         ATMService atmService = new ATMService(Banknotes.FIVE, 10, Banknotes.TEN, 1, Banknotes.TWENTY, 2, Banknotes.FIFTY, 1);
 
         Optional<Banknotes> actual = atmService.dispense(155);
-        //System.out.println(actual.get());
 
         Assert.assertFalse(actual.isPresent());
         Assert.assertEquals(150, atmService.getTotalAvailable());
