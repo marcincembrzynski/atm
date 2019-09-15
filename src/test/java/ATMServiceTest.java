@@ -129,4 +129,26 @@ public class ATMServiceTest {
         Assert.assertEquals(80, atmService.getTotalAvailable());
     }
 
+    @Test
+    public void shouldDispense3FivesAnd1Twenty(){
+        ATMService atmService = new ATMService(Banknotes.FIVE, 10, Banknotes.TWENTY, 10, Banknotes.FIFTY, 1);
+
+        Optional<Banknotes> actual = atmService.dispense(35);
+
+        Assert.assertTrue(actual.isPresent());
+        Assert.assertEquals(3, actual.get().get(5));
+        Assert.assertEquals(1, actual.get().get(20));
+        Assert.assertEquals(265, atmService.getTotalAvailable());
+    }
+
+    @Test
+    public void shouldNotDispense(){
+        ATMService atmService = new ATMService(Banknotes.FIVE, 6, Banknotes.FIFTY, 1);
+
+        Optional<Banknotes> actual = atmService.dispense(35);
+
+        Assert.assertFalse(actual.isPresent());
+        Assert.assertEquals(80, atmService.getTotalAvailable());
+    }
+
 }
